@@ -62,6 +62,70 @@ MPD_PORT|Defaults to `6600`
 The first run should be interactive, because you will receive the link to be opened in order to authorize yams to access your Last.FM account.  
 After this initial configuration, if you have setup the volume correctly, you will be able to run the container non interactively.
 
+### Example configuration
+
+Please see the following docker-compose file:
+
+```text
+---
+version: "3"
+
+networks:
+  mpd-pulse:
+    external: true
+
+services:
+  yams:
+    image: giof71/yams:latest
+    container_name: yams-pulse
+    networks:
+      - mpd-pulse
+    environment:
+      - TZ=Europe/Rome
+      - PUID=1000
+      - PGID=1000
+      - MPD_HOST=mpd-pulse
+    volumes:
+      - ./data:/data
+```
+
+This container runs in the same docker network named `mpd-pulse`, so we can refer to mpd using its container name, assuming mpd is running in a docker container (see my repo [here](https://github.com/GioF71/mpd-alsa-docker)).  
+Another example, using host networking:
+
+```text
+---
+version: "3"
+
+services:
+  yams:
+    image: giof71/yams:latest
+    container_name: yams-pulse
+    network_mode: host
+    environment:
+      - TZ=Europe/Rome
+      - PUID=1000
+      - PGID=1000
+      - MPD_HOST=mpd-hostname.home.lan
+      - MPD_PORT=6601
+    volumes:
+      - ./data:/data
+```
+
+This time we don't have a docker network, and if mpd is not running on localhost, we can specify hostname and port using `MPD_HOST` and `MPD_PORT`. Both can be omitted if the values are respectively `localhost` and `6600`.  
+In both cases, for the first interactive run, execute the following:
+
+```text
+docker-compose run yams
+```
+
+Please note that `yams` here is the name of the service in the docker-compose file.  
+Follow the instructions on the console, so open the link and authorized the application on Last.FM. Press `enter` on the console as requested.  
+After this step, you can simply stop the container (`CTRL-C`, maybe twice to trigger a kill), then restart it as usual with:
+
+```text
+docker-compose up -d
+```
+
 ### Changes
 
 See the following table.
