@@ -14,6 +14,7 @@ First and foremost, the reference to the projects:
 
 [Yams](https://github.com/Berulacks/yams)
 [Music Player Daemon](https://www.musicpd.org)  
+Current version of yams if `0.7.3`.
 
 ## Links
 
