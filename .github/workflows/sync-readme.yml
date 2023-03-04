@@ -22,4 +22,4 @@ jobs:
           pass: ${{ secrets.DOCKER_PASSWORD }}
           slug: ${{ secrets.DOCKER_USERNAME }}/yams
           readme: ./README.md
-          description: Easily run yams, yet another Last.FM scrobbler for MPD
+          description: Easily run yams, Yet Another Mpd Scrobbler
