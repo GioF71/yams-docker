@@ -35,7 +35,7 @@ RUN mkdir -p /app/log
 
 RUN chmod -R 755 /app
 
-VOLUME /yams
+VOLUME /data
 
 ENV STARTUP_DELAY_SEC ""
 
