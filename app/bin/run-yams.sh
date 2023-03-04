@@ -77,7 +77,12 @@ if [[ -n "{${PUID}" || -z "${USER_MODE}" || "${USER_MODE^^}" == "YES" ]]; then
     cat /etc/passwd|grep $USER_NAME
     # this should not be needed
     CMD_LINE="$CMD_LINE --session-file-path /data/.config/yams/.lastfm_session"
-    echo "Executing ..."
+    if [ -f /data/.config/yams/yams.pid ]; then
+        echo "Removing pid ..."
+        rm /data/.config/yams/yams.pid
+        echo "Removed pid"
+    fi
+    echo "Executing [$CMD_LINE]..."
     su - $USER_NAME -c "$CMD_LINE"
 else
     eval "$CMD_LINE"
