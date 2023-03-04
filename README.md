@@ -61,3 +61,12 @@ MPD_PORT|Defaults to `6600`
 
 The first run should be interactive, because you will receive the link to be opened in order to authorize yams to access your Last.FM account.  
 After this initial configuration, if you have setup the volume correctly, you will be able to run the container non interactively.
+
+### Changes
+
+See the following table.
+
+Date|Description
+:---|:---
+2023-03-04|Fixed volume in Dockerfile ([#1](https://github.com/GioF71/yams-docker/issues/1))
+2023-03-03|Initial release
