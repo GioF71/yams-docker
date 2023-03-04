@@ -1,9 +1,25 @@
 ARG BASE_IMAGE="${BASE_IMAGE:-python:slim}"
 FROM ${BASE_IMAGE} AS BASE
+ARG USE_APT_PROXY
+
+RUN mkdir -p /app/conf
+
+COPY app/conf/01proxy /app/conf/
+
+RUN if [ "$USE_APT_PROXY" = "Y" ]; then \
+	echo "Using apt proxy"; \
+	cp /app/conf/01proxy /etc/apt/apt.conf.d/01proxy; \
+	echo /etc/apt/apt.conf.d/01proxy; \
+	else \
+	echo "Building without proxy"; \
+	fi
+
+ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update
 RUN apt-get install -y git
-RUN apt-get install -y gcc python3-dev
+RUN apt-get install -y gcc
+RUN apt-get install -y python3-dev
 
 RUN mkdir /src
 WORKDIR /src
@@ -18,6 +34,8 @@ RUN pip3 install .
 
 RUN rm /src -Rf
 
+RUN apt-get remove -y python3-dev
+RUN apt-get remove -y gcc
 RUN apt-get remove -y git
 RUN apt-get autoremove -y
 
