@@ -64,6 +64,9 @@ ENV USER_MODE ""
 ENV PUID ""
 ENV PGID ""
 
+ENV API_KEY ""
+ENV API_SECRET ""
+
 COPY app/bin/run-yams.sh /app/bin/run-yams.sh
 RUN chmod 755 /app/bin/run-yams.sh
 
