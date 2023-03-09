@@ -21,6 +21,10 @@ if [[ -n "${MPD_PORT}" ]]; then
     CMD_LINE="$CMD_LINE -p $MPD_PORT"
 fi
 
+if [[ -n "${API_KEY}" && -n "${API_SECRET}" ]]; then
+    CMD_LINE="$CMD_LINE --api-key ${API_KEY} --api-secret ${API_SECRET}"
+fi
+
 echo "CMD_LINE=[$CMD_LINE]"
 
 number_re="^[0-9]+$"
