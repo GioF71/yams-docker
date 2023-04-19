@@ -132,6 +132,7 @@ See the following table.
 
 Date|Description
 :---|:---
+2023-04-19|Routine build after updates to the upstream project
 2023-03-09|Support for `API_KEY` and `API_SECRET` ([#13](https://github.com/GioF71/yams-docker/issues/13))
 2023-03-04|Add apt proxy support ([#4](https://github.com/GioF71/yams-docker/issues/4))
 2023-03-04|Removing existing pid before restart ([#5](https://github.com/GioF71/yams-docker/issues/5))
