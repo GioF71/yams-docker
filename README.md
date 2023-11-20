@@ -23,7 +23,7 @@ Images: [DockerHub](https://hub.docker.com/r/giof71/yams)
 
 ## Why
 
-I just wanted to be able to run `yams` using a docker container.
+I just wanted to be able to run `yams` using a docker container. I wanted to be able to use it on Moode Audio also.  
 
 ## Prerequisites
 
