@@ -27,7 +27,8 @@ I just wanted to be able to run `yams` using a docker container. I wanted to be 
 
 ## Prerequisites
 
-See [this](https://github.com/GioF71/yams-docker/blob/main/doc/prerequisites.md) page.
+See [this](https://github.com/GioF71/yams-docker/blob/main/doc/prerequisites.md) page.  
+The page also covers docker installation on Moode Audio.  
 
 ## Get the image
 
