@@ -1,0 +1,17 @@
+allow_same_track_scrobble_in_a_row: false
+api_key: xxxx
+api_secret: xxxx
+base_url: http://ws.audioscrobbler.com/2.0/
+cache_file: /data/.cache/yams/scrobbles.cache
+disable_log: false
+log_file: /data/.local/state/yams/yams.log
+mpd_host: 127.0.0.1
+mpd_port: '6600'
+no_daemon: false
+pid_file: /data/yams.pid
+real_time: true
+scrobble_min_time: 10
+scrobble_threshold: 50
+session_file: /data/.local/state/yams/.lastfm_session
+update_interval: 1
+watch_threshold: 5
