@@ -57,15 +57,17 @@ VOLUME /data
 
 ENV STARTUP_DELAY_SEC ""
 
-ENV MPD_HOST ""
-ENV MPD_PORT ""
+ENV MPD_HOST=""
+ENV MPD_PORT=""
 
-ENV USER_MODE ""
-ENV PUID ""
-ENV PGID ""
+ENV USER_MODE=""
+ENV PUID=""
+ENV PGID=""
 
-ENV API_KEY ""
-ENV API_SECRET ""
+ENV API_KEY=""
+ENV API_SECRET=""
+
+ENV SESSION_FILE=""
 
 COPY app/bin/run-yams.sh /app/bin/run-yams.sh
 RUN chmod 755 /app/bin/run-yams.sh
