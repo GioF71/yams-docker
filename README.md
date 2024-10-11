@@ -58,6 +58,11 @@ PUID|User id, defaults to `1000`
 PGID|Group id, defaults to `1000`
 MPD_HOST|Host for Music Player daemon, defaults to `localhost`, which is generally correct when the container is run in `host` mode.
 MPD_PORT|Defaults to `6600`
+SESSION_FILE|Specify the location of the session file.
+
+#### Some Notes
+
+About `SESSION_FILE`, you will need to make sure it indicates a path which is accessible to the container.
 
 ### First run
 
