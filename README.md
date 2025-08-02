@@ -139,6 +139,7 @@ See the following table.
 
 Date|Description
 :---|:---
+2025-08-02|Remove switch to /tmp if /data is not writable
 2024-10-07|Use exec so we can get rid of bash processes
 2023-04-19|Routine build after updates to the upstream project
 2023-03-09|Support for `API_KEY` and `API_SECRET` ([#13](https://github.com/GioF71/yams-docker/issues/13))

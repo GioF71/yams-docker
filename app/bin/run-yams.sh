@@ -4,16 +4,17 @@
 # 9 Invalid parameter
 # 10 Missing mandatory parameter
 
+uid=$(id -u)
+if [[ $uid -ne 0 ]]; then
+    echo "This container must be run as root."
+    exit 1
+fi
+
 DEFAULT_UID=1000
 DEFAULT_GID=1000
 
 DEFAULT_RUNTIME_DIR=/data
 runtime_dir=$DEFAULT_RUNTIME_DIR
-
-if [ ! -w "$runtime_dir" ]; then
-    echo "Runtime dir [$runtime_dir] is not writable, switching to /tmp ..."
-    runtime_dir=/tmp
-fi
 
 echo "Creating config directory [$runtime_dir/.config/yams] ..."
 mkdir -p $runtime_dir/.config/yams
@@ -72,12 +73,6 @@ if [ $use_custom_session_file -eq 0 ]; then
     mkdir -p $runtime_dir/.config/yams
     echo "Setting default session file to [$runtime_dir/.config/yams/.lastfm_session] ..."
     CMD_LINE="$CMD_LINE --session-file-path $runtime_dir/.config/yams/.lastfm_session"
-fi
-
-uid=$(id -u)
-if [[ $uid -ne 0 ]]; then
-    echo "This container must be run as root."
-    exit 1
 fi
 
 echo "Running with uid=[$uid] ..."
