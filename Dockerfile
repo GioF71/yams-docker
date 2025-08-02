@@ -1,5 +1,5 @@
 ARG BASE_IMAGE="${BASE_IMAGE:-python:slim}"
-FROM ${BASE_IMAGE} AS BASE
+FROM ${BASE_IMAGE} AS base
 ARG USE_APT_PROXY
 
 RUN mkdir -p /app/conf
@@ -42,7 +42,7 @@ RUN apt-get autoremove -y
 RUN rm -rf /var/lib/apt/lists/*
 
 FROM scratch
-COPY --from=BASE / /
+COPY --from=base / /
 
 LABEL maintainer="GioF71"
 LABEL source="https://github.com/GioF71/yams-docker"
@@ -55,7 +55,7 @@ RUN chmod -R 755 /app
 
 VOLUME /data
 
-ENV STARTUP_DELAY_SEC ""
+ENV STARTUP_DELAY_SEC=""
 
 ENV MPD_HOST=""
 ENV MPD_PORT=""

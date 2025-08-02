@@ -70,9 +70,9 @@ fi
 
 if [ $use_custom_session_file -eq 0 ]; then
     echo "Creating directory for session file [$runtime_dir/.config/yams] ..."
-    mkdir -p $runtime_dir/.config/yams
-    echo "Setting default session file to [$runtime_dir/.config/yams/.lastfm_session] ..."
-    CMD_LINE="$CMD_LINE --session-file-path $runtime_dir/.config/yams/.lastfm_session"
+    mkdir -p $runtime_dir/.local/state/yams
+    echo "Setting default session file to [$runtime_dir/.local/state/yams/.lastfm_session] ..."
+    CMD_LINE="$CMD_LINE --session-file-path $runtime_dir/.local/state/yams/.lastfm_session"
 fi
 
 echo "Running with uid=[$uid] ..."
