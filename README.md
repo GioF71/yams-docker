@@ -139,6 +139,9 @@ See the following table.
 
 Date|Description
 :---|:---
+2025-08-02|Corrected session path
+2025-08-02|Add support for arm/v5
+2025-08-02|Updated GitHub action versions
 2025-08-02|Remove switch to /tmp if /data is not writable
 2024-10-07|Use exec so we can get rid of bash processes
 2023-04-19|Routine build after updates to the upstream project
