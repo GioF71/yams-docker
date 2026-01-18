@@ -62,7 +62,9 @@ use_custom_session_file=0
 if [[ -n "${SESSION_FILE}" ]]; then
     echo "SESSION_FILE=[$SESSION_FILE]"
     if [ -f "$SESSION_FILE" ]; then
-        echo "SESSION_FILE [$SESSION_FILE] exists"
+        echo "SESSION_FILE [$SESSION_FILE] exists, copying ..."
+        cp $SESSION_FILE $runtime_dir/.local/state/yams/.lastfm_session
+        echo "SESSION_FILE [$SESSION_FILE] copied to [$runtime_dir]"
         use_custom_session_file=1
         CMD_LINE="$CMD_LINE --session-file-path $SESSION_FILE"
     fi
@@ -107,18 +109,19 @@ if [[ -n "{${PUID}" || -z "${USER_MODE}" || "${USER_MODE^^}" == "YES" ]]; then
     fi
     echo "Created $USER_NAME (group: $GROUP_NAME)"
     cat /etc/passwd|grep $USER_NAME
-    echo "Creating home directory ..."
+    echo "Creating home directory at [$runtime_dir] ..."
     mkdir -p $runtime_dir
-    echo "Setting ownership ..."
-    chown -R yams-user:yams-group /app/log
+    echo "Creating config directory at [$runtime_dir/.config/yams] ..."
+    mkdir -p $runtime_dir/.config/yams
+    echo "Creating local at [$runtime_dir/.local] ..."
+    mkdir -p $runtime_dir/.local
+    echo "Setting ownership for home directory [$runtime_dir] ..."
     chown -R yams-user:yams-group $runtime_dir
+    echo "Setting ownership for log directory ..."
+    chown -R yams-user:yams-group /app/log
     echo "Setting home directory ..."
     usermod --home $runtime_dir yams-user
     cat /etc/passwd | grep $USER_NAME
-    if [ ! -f $runtime_dir/.config/yams/yams.yml ]; then
-        echo "Configuration file not found, generating ..."
-        exec su - $USER_NAME -c "XDG_RUNTIME_DIR=$runtime_dir yams --generate-config"        
-    fi
     if [ -f $runtime_dir/.config/yams/yams.pid ]; then
         echo "Removing pid ..."
         rm $runtime_dir/.config/yams/yams.pid

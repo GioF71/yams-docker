@@ -139,6 +139,7 @@ See the following table.
 
 Date|Description
 :---|:---
+2026-01-18|Avoid to run --generate-config, should work more reliably
 2025-08-02|Corrected session path
 2025-08-02|Add support for arm/v5
 2025-08-02|Updated GitHub action versions
